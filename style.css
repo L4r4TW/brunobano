@@ -1,0 +1,478 @@
+/*
+Theme Name: Bruno Blog
+Author: Bruno
+Version: 1.0
+*/
+:root {
+  --max: 70ch;
+  --pad: clamp(12px, 2vw, 24px);
+  --fz: clamp(16px, 1.6vw, 18px);
+  --lead: 1.6;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  margin: 0;
+  font: 400 var(--fz) / var(--lead) system-ui;
+}
+.container {
+  max-width: var(--max);
+  margin: auto;
+  padding: 0 var(--pad);
+}
+.container.wide {
+  max-width: min(1200px, 92vw);
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  color: #fff;
+  z-index: 10;
+}
+.site-header.scrolled {
+  background: #111;
+  color: #fff;
+  transition: 0.3s;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--pad);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+  pointer-events: none;
+  z-index: 1; /* sits above image, below title */
+}
+.hero img {
+  width: 100%;
+  height: clamp(40vh, 58vh, 70vh);
+  object-fit: cover;
+  display: block;
+}
+.hero-title {
+  position: absolute;
+  inset: auto 0 10%;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 56px);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.card {
+  display: block;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.card .pad {
+  padding: 16px;
+}
+.post-meta {
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+footer {
+  margin-top: 60px;
+  border-top: 1px solid #eee;
+}
+
+/* Hero full-screen */
+.hero img {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+}
+.hero-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Featured cards */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 40px);
+  margin: 44px 0 56px;
+  align-items: stretch;
+}
+.feat-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+.feat-card img {
+  width: 100%;
+  aspect-ratio: 16/11;
+  height: auto;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.feat-card .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 18px;
+  background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.2) 45%, transparent 70%);
+}
+.feat-card .feat-title {
+  color: #fff;
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 22px);
+  text-shadow: 0 2px 14px rgba(0,0,0,.4);
+}
+.feat-card .cat {
+  color: #47a457; /* green label */
+  font-weight: 700;
+  letter-spacing: .02em;
+  font-size: 12px;
+}
+.feat-card:hover img { transform: scale(1.03); }
+
+/* Newsletter bar */
+.newsletter {
+  background: #e8f3ec;
+  padding: 30px 0;
+  margin: 40px 0;
+}
+.newsletter form {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+}
+.newsletter input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+.newsletter button {
+  padding: 12px 20px;
+  background: #4a7856;
+  color: #fff;
+  border: 0;
+}
+
+/* Latest Articles grid */
+.grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 30px 0;
+}
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card .pad {
+  padding: 15px;
+}
+.readmore {
+  background: #4a7856;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin-top: 10px;
+}
+
+/* Instagram footer gallery */
+.insta-footer {
+  margin-top: 40px;
+  background: #e8f3ec;
+}
+.insta-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.insta-row img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* ===== Transparent header over hero ===== */
+.site-header.transparent {
+  position: absolute;
+  inset: 0 0 auto 0; /* top overlay */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  z-index: 1000;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--pad);
+  position: relative;
+}
+.menu .menu-list {
+  display: flex;
+  gap: min(4vw, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu .menu-list a,
+.ig {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.menu .menu-list a:hover,
+.ig:hover {
+  opacity: 1;
+}
+
+/* Mobile burger */
+.burger {
+  display: none;
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+}
+@media (max-width: 900px) {
+  .burger {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: var(--pad);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    z-index: 1100;
+  }
+  .burger span {
+    width: 22px;
+    height: 2px;
+    background: #111;
+    margin: 0;
+    border-radius: 2px;
+    transition: transform .25s ease, opacity .2s ease;
+  }
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 90px 24px 24px;
+    transition: right 0.25s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  #nav-toggle:checked + .menu {
+    right: 0;
+  }
+  /* Turn burger into an X when open */
+  #nav-toggle:checked ~ .burger span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  #nav-toggle:checked ~ .burger span:nth-child(2){ opacity: 0; }
+  #nav-toggle:checked ~ .burger span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+  .menu .menu-list {
+    flex-direction: column;
+    gap: 18px;
+    font-size: 18px;
+  }
+  /* Mobile hero sizing */
+  .hero img { height: 68vh; }
+  .hero-title { font-size: clamp(32px, 12vw, 56px); padding: 0 16px; }
+  /* Optional: circle logo treatment */
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+  .brand img { height: 28px; width: auto; }
+}
+
+/* Optional: when you scroll, add subtle backdrop for readability on inner pages */
+.scrolled .site-header.transparent {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+/* ===== Hero ~ half screen height ===== */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero img {
+  width: 100%;
+  height: clamp(42vh, 52vh, 60vh);
+  object-fit: cover;
+  display: block;
+}
+.hero-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  font-family: 'Anton', system-ui, sans-serif;
+  font-weight: 400; /* Anton ships as a single heavy weight */
+  text-transform: uppercase;
+  font-size: clamp(28px, 6vw, 64px);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+  z-index: 2; /* above overlay */
+}
+
+/* Remove any white line/gap between header and hero */
+.site-header,
+.site-header * {
+  border: none !important;
+}
+.hero {
+  margin-top: 0;
+}
+
+/* If other pages (without hero) need spacing under the now-absolute header: */
+body:not(.home) .site-content {
+  padding-top: 90px;
+}
+
+/* Navbar basics */
+.site-header.transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--pad);
+  position: relative;
+}
+
+.brand img {
+  height: 40px;
+  width: auto;
+}
+
+.menu-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.menu-list a:hover {
+  opacity: 0.8;
+}
+
+/* Reset WP nav list */
+.menu-list,
+.menu-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make items horizontal */
+.menu-list {
+  display: flex;
+  gap: 32px; /* space between links */
+  align-items: center;
+}
+
+/* Style links */
+.menu-list li a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.menu-list li a:hover {
+  opacity: 0.8;
+}
