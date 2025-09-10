@@ -3,7 +3,7 @@
 <!-- Hero (static image) -->
 <section class="hero">
   <img src="<?php echo get_template_directory_uri(); ?>/hero.jpg" alt="">
-  <h1 class="hero-title">LET'S SPEAK ABOUT DIGITAL MARKETING</h1>
+  <h1 class="hero-title">LET'S TALK ABOUT DIGITAL MARKETING</h1>
 </section>
 
 <!-- Featured block -->
@@ -41,7 +41,7 @@
 <!-- Contact -->
 <section class="contact">
   <div class="container">
-    <h2>Contact</h2>
+    <h2>Contact me!</h2>
     <?php if(isset($_GET['contact']) && $_GET['contact']==='sent'): ?>
       <p class="form-note success">Thanks! Your message has been sent.</p>
     <?php elseif(isset($_GET['contact']) && $_GET['contact']==='error'): ?>
@@ -64,7 +64,7 @@
 </section>
 
 <!-- Latest Articles -->
-<div class="container">
+<div class="container wide">
   <h2>Latest Articles</h2>
   <div class="grid">
     <?php
@@ -81,12 +81,5 @@
     <?php endwhile; wp_reset_postdata(); ?>
   </div>
 </div>
-
-<!-- Instagram / Gallery Footer -->
-<section class="insta-footer">
-  <div class="insta-row">
-    <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg"><img src="img4.jpg"><img src="img5.jpg">
-  </div>
-</section>
 
 <?php get_footer(); ?>

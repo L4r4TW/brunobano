@@ -4,7 +4,10 @@ add_action('after_setup_theme', function(){
   add_theme_support('post-thumbnails');     // featured images
   add_theme_support('html5', ['search-form','gallery','caption']);
   add_theme_support('automatic-feed-links');
-  register_nav_menus(['primary' => 'Primary Menu']);
+  register_nav_menus([
+    'primary' => 'Primary Menu',
+    'footer'  => 'Footer Menu'
+  ]);
 });
 
 add_action('wp_enqueue_scripts', function(){
