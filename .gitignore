@@ -1,0 +1,29 @@
+# macOS / OS
+.DS_Store
+
+# Node / build tools (if you use them)
+node_modules/
+npm-debug.log*
+yarn.lock
+package-lock.json
+
+# Compiled / build output
+dist/
+build/
+
+# Sass / cache
+.sass-cache/
+
+# PHP / Composer (if you use it)
+vendor/
+composer.lock
+
+# Env / secrets
+.env
+.env.* 
+*.local
+
+# IDEs
+.vscode/
+.idea/
+*.iml

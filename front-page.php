@@ -38,15 +38,29 @@
   
 </section>
 
-<!-- Newsletter -->
-<section class="newsletter">
+<!-- Contact -->
+<section class="contact">
   <div class="container">
-    <h2>Want to keep up with our blog?</h2>
-    <form method="post" action="#">
-      <input type="email" placeholder="Your e-mail" required>
-      <button type="submit">Subscribe</button>
+    <h2>Contact</h2>
+    <?php if(isset($_GET['contact']) && $_GET['contact']==='sent'): ?>
+      <p class="form-note success">Thanks! Your message has been sent.</p>
+    <?php elseif(isset($_GET['contact']) && $_GET['contact']==='error'): ?>
+      <p class="form-note error">Sorry, something went wrong. Please try again.</p>
+    <?php endif; ?>
+    <form method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
+      <input type="hidden" name="action" value="bruno_contact_submit">
+      <?php wp_nonce_field('bruno_contact','bruno_contact_nonce'); ?>
+      <div class="form-grid">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your e-mail" required>
+        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      </div>
+      <!-- Honeypot -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button type="submit">Send Message</button>
     </form>
   </div>
+  
 </section>
 
 <!-- Latest Articles -->
