@@ -489,11 +489,30 @@ footer {
 .post-hero { position: relative; isolation: isolate; }
 .post-hero img { width: 100%; height: clamp(42vh, 58vh, 68vh); object-fit: cover; display: block; }
 .post-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.55)); z-index: 1; }
+.single-date{ position:absolute; inset:auto 0 calc(10% + clamp(52px, 8vw, 110px)); text-align:center; color:#fff; z-index:2; font-family:'DM Sans', system-ui, sans-serif; font-weight:700; font-size: clamp(12px, 1.2vw, 14px); opacity:.9; text-shadow:0 1px 12px rgba(0,0,0,.5); }
 .single-title {
-  position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; text-align:center;
+  position: absolute; inset: auto 0 10%;
+  display:flex; align-items:flex-end; justify-content:center; text-align:center;
   color:#fff; font-family: 'Anton', system-ui, sans-serif; font-weight: 400; text-transform: uppercase;
   font-size: clamp(28px, 6.5vw, 56px); text-shadow: 0 2px 24px rgba(0,0,0,.55); z-index: 2;
+  padding: 0 16px;
 }
+@media (max-width: 700px){
+  .single-title{ inset: auto 0 8%; font-size: clamp(24px, 9vw, 40px); }
+  .single-date{ inset:auto 0 calc(8% + 52px); font-size: 13px; }
+}
+.author-inline{ position:absolute; inset:auto 0 3.5%; display:flex; align-items:center; justify-content:center; gap:10px; color:#fff; z-index:2; font-family:'DM Sans', system-ui, sans-serif; font-weight:700; text-shadow:0 1px 12px rgba(0,0,0,.5); }
+.author-inline .avatar{ width:36px; height:36px; border-radius:50%; border:2px solid rgba(255,255,255,.95); object-fit:cover; }
+.author-inline .by{ opacity:.95; }
+@media (max-width: 700px){ .author-inline{ inset:auto 0 4%; } }
+
+/* Overlay container to stack date, title, author without overlap */
+.post-hero-overlay{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:8px; padding:0 16px 10%; z-index:2; pointer-events:none; }
+.post-hero .single-title,
+.post-hero .single-date,
+.post-hero .author-inline{ position:static !important; inset:auto; }
+.post-hero .author-inline{ gap:10px; }
+@media (max-width:700px){ .post-hero-overlay{ padding-bottom:8%; gap:6px; } }
 .post-wrap { margin: 28px auto 40px; }
 .post-meta { display:flex; align-items:center; gap:10px; color:#6b7280; font-size: 14px; margin-bottom: 12px; }
 .post-meta .dot{opacity:.5}

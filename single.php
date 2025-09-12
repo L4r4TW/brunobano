@@ -9,7 +9,14 @@
     } else { ?>
       <img src="<?php echo get_template_directory_uri(); ?>/hero.jpg" alt="">
     <?php } ?>
-    <h1 class="single-title"><?php the_title(); ?></h1>
+    <div class="post-hero-overlay">
+      <div class="single-date"><?php echo esc_html(get_the_date()); ?></div>
+      <h1 class="single-title"><?php the_title(); ?></h1>
+      <div class="author-inline">
+        <?php echo get_avatar(get_the_author_meta('ID'), 40, '', get_the_author(), ['class' => 'avatar']); ?>
+        <span class="by">by <?php the_author(); ?></span>
+      </div>
+    </div>
   </section>
 
   <!-- Post body -->
