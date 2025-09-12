@@ -21,12 +21,7 @@
 
   <!-- Post body -->
   <article class="post-wrap container wide">
-    <header class="post-meta">
-      <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date()); ?></time>
-      <span class="dot">•</span>
-      <span class="by">By <?php the_author(); ?></span>
-    </header>
-
+    
     <!-- Share bar -->
     <div class="share-bar">
       <?php $url = urlencode(get_permalink()); $title = urlencode(get_the_title()); ?>
