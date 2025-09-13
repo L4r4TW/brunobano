@@ -25,14 +25,23 @@
     <!-- Share bar -->
     <div class="share-bar">
       <?php $url = urlencode(get_permalink()); $title = urlencode(get_the_title()); ?>
-      <a class="share fb"  href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank" rel="noopener">Facebook</a>
-      <a class="share tw"  href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>&text=<?php echo $title; ?>" target="_blank" rel="noopener">Twitter</a>
-      <a class="share ln"  href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url; ?>&title=<?php echo $title; ?>" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="share wa"  href="https://api.whatsapp.com/send?text=<?php echo $title; ?>%20<?php echo $url; ?>" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="share fb"  aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share tw"  aria-label="Share on Twitter"  href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>&text=<?php echo $title; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share ln"  aria-label="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url; ?>&title=<?php echo $title; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share wa"  aria-label="Share on WhatsApp" href="https://api.whatsapp.com/send?text=<?php echo $title; ?>%20<?php echo $url; ?>" target="_blank" rel="noopener nofollow"></a>
     </div>
 
     <div class="post-content">
       <?php the_content(); ?>
+    </div>
+
+    <!-- Share bar (bottom) -->
+    <div class="share-bar bottom">
+      <?php $url = urlencode(get_permalink()); $title = urlencode(get_the_title()); ?>
+      <a class="share fb"  aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share tw"  aria-label="Share on Twitter"  href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>&text=<?php echo $title; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share ln"  aria-label="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url; ?>&title=<?php echo $title; ?>" target="_blank" rel="noopener nofollow"></a>
+      <a class="share wa"  aria-label="Share on WhatsApp" href="https://api.whatsapp.com/send?text=<?php echo $title; ?>%20<?php echo $url; ?>" target="_blank" rel="noopener nofollow"></a>
     </div>
   </article>
 
