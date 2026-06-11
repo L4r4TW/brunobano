@@ -4,6 +4,14 @@ This file documents the WordPress database/content configuration needed for the 
 
 Do not commit database dumps, database credentials, salts, user passwords, or `.env` files to this theme repository.
 
+## Documentation Rule
+
+Keep this file updated whenever WordPress admin, content, media, menu, post, category, tag, or migration requirements change.
+
+If a code change creates a new content requirement, such as a new required page, menu location, category, custom field, image expectation, plugin dependency, or setting, update this file in the same work session whenever possible.
+
+Also update `README.md` and `PROJECT_HANDOFF.md` when the change affects general setup or project state.
+
 ## Purpose
 
 This theme does not define custom database tables. It relies on standard WordPress data:
@@ -25,7 +33,6 @@ In WordPress admin, check:
 
 1. Settings > General
    - Set the site title and tagline.
-   - The tagline may be used as fallback archive description text.
 
 2. Settings > Reading
    - Choose whether the site uses a static front page.
@@ -35,7 +42,6 @@ In WordPress admin, check:
 
 3. Settings > Permalinks
    - Recommended: `Post name`.
-   - This gives clean URLs for posts, categories, and pages.
 
 4. Appearance > Themes
    - Activate `Bruno Blog`.
@@ -50,7 +56,6 @@ Create or confirm these pages in WordPress:
 
 - Blog
   - Assign this as the posts page in Settings > Reading.
-  - The theme uses `home.php`, which reuses `archive.php`.
 
 Optional pages:
 
@@ -73,19 +78,9 @@ Recommended post setup:
 - Assign at least one category.
 - Add tags where useful.
 
-Featured images are important because the theme uses them in:
-
-- Homepage featured cards
-- Homepage latest articles
-- Blog archive cards
-- Single post hero sections
-- Related post cards
-
-If a post does not have a featured image, some templates fall back to `hero.jpg`.
+Featured images are important because the theme uses them in homepage cards, archive cards, single post heroes, and related post cards.
 
 ## Categories
-
-Categories power blog organization and archive navigation.
 
 Recommended category examples for a digital marketing blog:
 
@@ -97,35 +92,19 @@ Recommended category examples for a digital marketing blog:
 - Paid Ads
 - Strategy
 
-The archive page displays up to 8 category/topic chips, ordered by post count.
-
 ## Featured Category
 
-The homepage tries to load 3 posts from a category with this slug:
+The homepage tries to load posts from a category with this slug:
 
 ```text
 featured
 ```
 
-Recommended setup:
-
-1. Go to Posts > Categories.
-2. Create a category named `Featured`.
-3. Confirm the slug is:
-
-```text
-featured
-```
-
-4. Assign this category to posts that should appear in the homepage featured block.
-
-If no posts are found in the `featured` category, the homepage falls back to the latest 3 posts.
+If no posts are found in the `featured` category, the homepage falls back to recent posts.
 
 ## Tags
 
 Tags are optional but useful for archive pages.
-
-If tags are used, WordPress tag archive pages will use `archive.php` and receive the same blog archive layout.
 
 Recommended tag examples:
 
@@ -152,13 +131,6 @@ Setup:
 
 If no footer menu is assigned, the footer attempts to fall back to the primary menu.
 
-Recommended primary menu items:
-
-- Home
-- Blog
-- About
-- Contact
-
 ## Custom Logo
 
 The header and footer support the WordPress custom logo.
@@ -173,16 +145,15 @@ If no custom logo exists, the theme falls back to the site name.
 
 ## Media Library
 
-The theme expects image-led content.
+Real content images for posts and pages should be uploaded through the WordPress Media Library.
 
-Recommended media setup:
+Theme-owned fallback/design images can live in the theme. Preferred theme asset structure:
 
-- Upload a custom logo.
-- Add featured images to all major posts.
-- Use consistent image dimensions where possible.
-- Prefer landscape images for blog cards and post heroes.
+```text
+assets/images/
+```
 
-Theme files also include local image assets:
+Current theme image files may include:
 
 - `hero.jpg`
 - `img1.jpg`
@@ -190,7 +161,7 @@ Theme files also include local image assets:
 - `post-2.jpg`
 - `post-3.jpg`
 
-These are theme assets, not Media Library records.
+If these are real post images, upload them through Media Library and assign them as featured images. If they are placeholders or fallback design assets, keep them as theme assets.
 
 ## Contact Form Data
 
@@ -205,25 +176,15 @@ The form:
 
 No contact form entries are stored in custom database tables by this theme.
 
-Email delivery depends on the local/server mail configuration. On local development environments, email may not send unless mail capture or SMTP is configured.
+Email delivery depends on the local/server mail configuration.
 
 ## Migration Between Devices
 
 Recommended migration options:
 
-1. Export/import WordPress content:
-   - Tools > Export
-   - Tools > Import
-
-2. Use a full WordPress migration tool if moving the complete site:
-   - Database
-   - Uploads
-   - Plugins
-   - Theme
-   - WordPress settings
-
-3. Copy or version-control this theme separately:
-   - `wp-content/themes/bruno_theme`
+1. Export/import WordPress content with Tools > Export and Tools > Import.
+2. Use a full WordPress migration tool if moving the complete site.
+3. Copy or version-control this theme separately.
 
 When moving to another device, confirm:
 
